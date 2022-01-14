@@ -13,10 +13,22 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        if: startsWith(runner.os, 'Linux')
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: |
+
+      - name: Generator client for typescript
+        run: |
           curl -o openapi.json https://iperon.info/api/v1/openapi.json
           npm install @openapitools/openapi-generator-cli -g
           openapi-generator-cli generate --generator-key typescript
