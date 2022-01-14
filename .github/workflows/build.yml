@@ -36,6 +36,10 @@ jobs:
           npm install @openapitools/openapi-generator-cli -g
           openapi-generator-cli generate --generator-key typescript
 
+      - name: Install a project with a clean slate
+        working-directory: output/typescript/
+        run: npm ci
+
       - name: Publish code
         working-directory: output/typescript/
         run: npm publish
