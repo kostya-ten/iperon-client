@@ -10,6 +10,9 @@ jobs:
   build:
     name: "Build clients"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
@@ -32,3 +35,9 @@ jobs:
           curl -o openapi.json https://iperon.info/api/v1/openapi.json
           npm install @openapitools/openapi-generator-cli -g
           openapi-generator-cli generate --generator-key typescript
+
+      - name: Publish code
+        working-directory: output/typescript/
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
