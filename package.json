@@ -9,5 +9,8 @@
   "eslintConfig": {},
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.23"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   }
 }
