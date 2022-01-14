@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: '14'
       - run: |
-          ls -ls
+          curl -o openapi.json https://iperon.info/api/v1/openapi.json
           npm install @openapitools/openapi-generator-cli -g
           openapi-generator-cli generate --generator-key typescript
