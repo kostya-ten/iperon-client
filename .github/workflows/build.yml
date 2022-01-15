@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@kostya-ten'
 
       - name: Generator client for typescript
         run: |
@@ -42,6 +43,10 @@ jobs:
         run: |
           npm install
           npm ci
+
+      - name: Authenticate with the GitHub Package Registry
+        run:
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Publish code
         working-directory: output/typescript/
