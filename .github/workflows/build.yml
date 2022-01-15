@@ -52,6 +52,7 @@ jobs:
       - name: Dir .npmrc
         run: |
           ls -lsha output/typescript/
+          cat output/typescript/.npmrc
 
       - name: Publish code
         working-directory: output/typescript/
