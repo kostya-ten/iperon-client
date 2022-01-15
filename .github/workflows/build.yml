@@ -44,15 +44,15 @@ jobs:
           npm install
           npm ci
 
-      - name: Authenticate with the GitHub Package Registry
-        run:
-          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > output/typescript/.npmrc
+#      - name: Authenticate with the GitHub Package Registry
+#        run:
+#          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+#          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > output/typescript/.npmrc
 
       - name: Dir .npmrc
         run: |
           ls -lsha output/typescript/
-          cat output/typescript/.npmrc
+          cat ~/.npmrc
 
       - name: Publish code
         working-directory: output/typescript/
