@@ -48,9 +48,13 @@ jobs:
         run:
           echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
+      - name: Copy .npmrc
+        run: |
+          cp ~/.npmrc output/typescript/
+
       - name: Publish code
         working-directory: output/typescript/
-        run: npm publish --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
