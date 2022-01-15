@@ -11,6 +11,6 @@
     "@openapitools/openapi-generator-cli": "^2.4.23"
   },
   "publishConfig": {
-    "registry":"registry=https://npm.pkg.github.com/kostya-ten/"
+    "registry":"https://npm.pkg.github.com/kostya-ten/"
   }
 }
