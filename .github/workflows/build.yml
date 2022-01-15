@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@kostya-ten'
 
       - name: Generator client for typescript
         run: |
