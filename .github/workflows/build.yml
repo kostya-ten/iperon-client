@@ -51,9 +51,8 @@ jobs:
 
       - name: Dir .npmrc
         run: |
-          ls -lsha output/typescript/
-          ls -lsha ~/
-#          cat ~/.npmrc
+          echo '//registry.npmjs.org/:_authToken=${{ secrets.GITHUB_TOKEN  }}' > ${{ github.workspace }}/.npmrc
+          cat .npmrc
 
       - name: Publish code
         working-directory: output/typescript/
