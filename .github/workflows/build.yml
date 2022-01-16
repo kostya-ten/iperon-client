@@ -51,14 +51,12 @@ jobs:
 
       - name: Dir .npmrc
         run: |
-          echo '//registry.npmjs.org/:_authToken=${{ secrets.GITHUB_TOKEN  }}' > ${{ github.workspace }}/.npmrc
+          echo '//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN  }}' > ${{ github.workspace }}/.npmrc
           cat .npmrc
 
       - name: Publish code
         working-directory: output/typescript/
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - uses: actions/upload-artifact@v2
         with:
